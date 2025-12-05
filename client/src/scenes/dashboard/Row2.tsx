@@ -4,7 +4,7 @@ import FlexBetween from '@/components/FlexBetween'
 import { useGetKpisQuery, useGetProductsQuery } from '@/state/api'
 import { Box, Typography, useTheme } from '@mui/material'
 import React, { useMemo } from 'react'
-import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from 'recharts'
 
 const pieData = [
   { name: "Group A", value: 600 },
@@ -30,6 +30,19 @@ const Row2 = () => {
       })
     );
   }, [operationalData]);
+
+  const productExpenseData = useMemo(() => {
+    return (
+      productData &&
+      productData.map(({ _id, price, expense }) => {
+        return {
+          id: _id,
+          price: price,
+          expense: expense,
+        };
+      })
+    );
+  }, [productData]);
 
   return (
     <>
@@ -90,7 +103,7 @@ const Row2 = () => {
             title="Campaigns and Targets" 
             sideText="+4%"
           />
-          <FlexBetween mt="-0.5rem" gap="1rem" pr="1rem">
+          <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
             <PieChart 
               width={110} 
               height={100}
@@ -117,35 +130,76 @@ const Row2 = () => {
                 ))}
               </Pie>
             </PieChart>
-            <Box ml="-0.7rem" flexBasis="50%" textAlign="center" color="#b6aaaaf9">
-                <Typography>
-                  Target Sales
-                </Typography>
-                <Typography m="0.3rem 0" variant='h6' color={palette.primary[300]}>
-                  83
-                </Typography>
-                <Typography>
-                  Finance goals of the campaign that is desired
-                </Typography>
+            <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
+              <Typography variant="h5">
+                Target Sales
+              </Typography>
+              <Typography m="0.3rem 0" variant="h3" color={palette.primary[300]}>
+                83
+              </Typography>
+              <Typography variant="h6">
+                Finance goals of the campaign that is desired
+              </Typography>
             </Box>
-            <Box flexBasis="40%" color="#edeeedf9">
-                <Typography>
-                  Loses in Revenue
-                </Typography>
-                <Typography>
-                  Losses are down 25%.
-                </Typography>
-                <Typography mt="0.3rem">
-                  Profit Margins 
-                </Typography>
-                <Typography>
-                  Margins are up by 30% from last month.
-                </Typography> 
-            </Box>
+            <Box flexBasis="40%">
+              <Typography variant="h5">
+                Losses in Revenue
+              </Typography>
+              <Typography variant="h6">
+                Losses are down 25%
+              </Typography>
+              <Typography mt="0.4rem" variant="h5">
+                Profit Margins
+              </Typography>
+              <Typography variant="h6">
+                Margins are up by 30% from last month.
+              </Typography>
+          </Box>
           </FlexBetween>
       </DashboardBox>
 
       <DashboardBox gridArea="f">
+        <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
+        <ResponsiveContainer width="100%" height="100%">
+          <ScatterChart
+            margin={{
+              top: 20,
+              right: 25,
+              bottom: 40,
+              left: -10,
+            }}
+          >
+            <CartesianGrid stroke={palette.grey[800]} />
+            <XAxis
+              type="number"
+              dataKey="price"
+              name="price"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `$${v}`}
+            />
+            <YAxis
+              type="number"
+              dataKey="expense"
+              name="expense"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `$${v}`}
+            />
+            <ZAxis type="number" range={[0,20]} />
+            <Tooltip formatter={(v) => `$${v}`} />
+            <Scatter
+              name="Product Expense Ratio"
+              data={productExpenseData}
+              fill={palette.tertiary[500]}
+              shape = {(props) => (
+                <circle cx={props.cx} cy={props.cy} r={3} fill={palette.tertiary[500]} />
+              )}
+            />
+          </ScatterChart>
+        </ResponsiveContainer>
       </DashboardBox>
     </>
   )
