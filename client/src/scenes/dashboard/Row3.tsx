@@ -4,7 +4,7 @@ import FlexBetween from '@/components/FlexBetween';
 import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from '@/state/api'
 import { Box, Typography, useTheme } from '@mui/material';
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { Cell, Pie, PieChart } from 'recharts';
 
 
@@ -213,9 +213,7 @@ const Row3 = () => {
                     margin="0 1rem"
                     variant="h5"
                 >
-                    Eaoficawimowiroiwecoew eaoficawimowiroiwecoew eaoficawimowiroiwecoew
-                    eaoficawimowiroiwecoew eaoficawimowiroiwecoew eaoficawimowiroiwecoew
-                    eaoficawimowiroiwecoew eaoficawimowiroiwecoew
+                    "Chat, please summarise these data for me. Yes i know im broke. Can someone TouchNGo me some money please. God Bless You."
                 </Typography>
             </DashboardBox>
         </>
