@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# 💵 Finance Tracker with Prediction Model
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Responsive **finance tracking application** that displays analysed report in charts usign **Recharts** and predicted analysis using **Regression**. 
+Project uses Node Js as runtime, Express Js as backend framework and MongoDB for  database.
+---
 
-Currently, two official plugins are available:
+## ✨ Features
+Users can browse and view graph display of:
+- revenue and expenses
+- profit and revenue 
+- revenue by month
+- operational vs non-operational expenses
+campaigns and targets 
+- product prices vs expenses 
+- list of products 
+- recent orders
+- expenses breakdown by category
+- overall sum,ary and explanation data 
+- prediction tab for revernue and predictions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Technology | Purpose |
+|-----------|---------|
+| MongoDB | Stores all finance, product, and transaction data. |
+| Material UI | Provides ready-to-use UI components and layout for the dashboard. |
+| Recharts | Displays financial data and predictions in interactive charts. |
+| Node JS | Server-side runtime environment.  |
+| Express JS | Backend framework for building APIs.  |
+| Redux Toolkit | State management and data fetching on the frontend.  |
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+## 🔗 Live Demo
+Coming Soon!
