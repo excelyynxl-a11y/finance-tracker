@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "mongodb": "^7.0.0",
-    "recharts": "^3.5.0"
+    "recharts": "^3.5.0",
+    "regression": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/regression": "^2.0.6"
   }
 }
